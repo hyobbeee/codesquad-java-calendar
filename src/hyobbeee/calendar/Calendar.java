@@ -4,28 +4,34 @@ import java.util.Scanner;
 
 public class Calendar {
 
-// 키보드로 입력받은 두 숫자의 합을 구한다.
-	
+// 변수와 if문, 배열을 활용해 월을 입력하면 그 달이 몇일로 구성되어 있는지 출력하는 프로그램 작성하기 
+
+
 //	public static void main(String[] args) {
-//		System.out.println("두 수를 입력하세요.");
-//		Scanner scan = new Scanner(System.in); //scanner클래스 객체 생성 /system.in : 키보드로 받는다.
-//		String[] data = scan.nextLine().split(",");
-//		int n = Integer.parseInt(data[0]);
-//		int m = Integer.parseInt(data[1]); 
-//		System.out.println("두수의 합은 " + n * m + " 입니다.");
+//		Scanner scanner = new Scanner(System.in); //scanner클래스 객체 생성 
+//		System.out.println("달을 입력하세요.");
+//		String s1;	// 변수 선언   
+//		s1 = scanner.next();
+//		int n = Integer.parseInt(s1); //정수를 받는다
+//		
+//		if (n % 2 == 0) { // 짝수
+//			System.out.println(n + "월은 30일까지 있습니다.");
+//			if (n == 2) {
+//				System.out.println(n + "월은 27~29일까지 있습니다.");			
+//			}
+//		} else if (n % 2 != 0) { // 홀수 
+//			System.out.println(n + "월은 31일까지 있습니다.");
+//		} 
 //	}
+//}
 
 	public static void main(String[] args) {
-		int a, b;
 		Scanner scanner = new Scanner(System.in);
-		String s1, s2;
-		System.out.println("두 수를 입력해 주세요.");
-		s1 = scanner.next(); // 
-		s2 = scanner.next();
-		a = Integer.parseInt(s1);
-		b = Integer.parseInt(s2);
-
-		System.out.printf("%d와 %d의 합은 %d입니다.", a, b, a + b); //printf => %d 자리 변수삽입 가
-		scanner.close();// import 파일 열었으면 닫기 
+		System.out.println("달을 입력하세요.");
+		int month = scanner.nextInt();
+		scanner.close();
+		int[] maxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+		
+		System.out.printf("%d월은 %d일까지 있습니다. \n", month, maxDays[month - 1]);
 	}
 }
