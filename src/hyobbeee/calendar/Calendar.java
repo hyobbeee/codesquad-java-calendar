@@ -1,7 +1,5 @@
 package hyobbeee.calendar;
 
-import java.util.Scanner;
-
 public class Calendar {
 
 
@@ -11,60 +9,29 @@ public class Calendar {
 		return MAX_DAYS[month - 1];
 	}
 	
-// 전단계와 비슷하게 반복입력을 받을 수 있게 구현한다.
-//	입력하는 곳 앞에 프롬프트를 출력한다.
-//	-1을 입력받는 경우 프로그램을 종료한다.
-
-	public static void main(String[] args) {
-
-		String PROMPT = "cal> ";
-		Scanner scanner = new Scanner(System.in);
-		Calendar cal = new Calendar();
+//  월을 입력하면 해당월의 달력을 출력한다.
+//	달력은 모양은 1단계에서 작성한 모양으로 만든다.
+//	1일은 일요일로 정해도 무방하다.
+//	-1을 입력받기 전까지 반복 입력받는다.
+//	프롬프트를 출력한다.
+	
+	public void printCalendar(int year, int month) {
+		System.out.printf("     <<%4d년%2d월>>\n",year, month); // % 뒤의숫자는 차지하는 자릿
+		System.out.println(" SU MO TU WE TH FI SA");
+		System.out.println("----------------------");
 		
-		int month = 1 ;
+		int maxDay = getMaxDaysOfMonth(month);
 		
-		while (true) { // month가 -1이 아닌동안 반복하겠다.
-			System.out.println("달을 입력하세요.");
-			System.out.print(PROMPT);
-			month = scanner.nextInt();
-			if (month == -1) {
-				System.out.println("1~12 사이의 값만 입력할 수 있습니다.");
-				break;
-			}	
-			if (month >= 13) {
-				System.out.println("1~12 사이의 값만 입력할 수 있습니다.");
-				continue; // 만나면 반복의 처음으로 돌아간다. 
-			}
-			System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getMaxDaysOfMonth(month)); // 메소드 생성
+		for(int i = 1; i <= maxDay; i++) {
+			System.out.printf("%3d", i); // %3d : 스페이스 포함 3칸 자리를 차지한다. 
+			if (i % 7 == 0) // 7 나눠서 나머지가 0 일때마다 줄바꿈 > 7번 돌때마다 
+				System.out.println();
 		}
-
-		System.out.println("--반복 횟수 종료--");
-		scanner.close();
+		System.out.println();
+		
+//		System.out.println(" 1  2  3  4  5  6  7");
+//		System.out.println(" 8  9 10 11 12 13 14");
+//		System.out.println("15 16 17 18 19 20 21");
+//		System.out.println("22 23 24 25 26 27 28");
 	}
 }
-
-//		int month = scanner.nextInt();
-//
-//		for (int i = 0; i < month; i++) { // n번 반복하는 코드
-//			System.out.println("달을 입력하세요.");
-//			System.out.print(PROMPT);
-//			int month = scanner.nextInt();
-//			System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getMaxDaysOfMonth(month)); // 메소드 생성
-//		}
-
-/*			
-// 내가 만든 코드 
-		int i = 1;
-		while (i <= times) {
-			System.out.println(times + "번");
-			i++; // 없으면 무한루프 됨.
-		
-		System.out.println("월을 입력하세요.");
-		int month = scanner.nextInt();
-		int cnt = times;
-
-		while (cnt <= month) {
-			cnt++;
-			System.out.printf("%d월은 %d일까지 있습니다. \n", cnt, cal.getMaxDaysOfMonth(cnt)); // 메소드 생성
-		}
-*/
