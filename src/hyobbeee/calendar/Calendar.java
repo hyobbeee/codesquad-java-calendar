@@ -4,6 +4,18 @@ import java.util.Scanner;
 
 public class Calendar {
 
+//	반복횟수를 입력하세요.
+//	3 (엔터)
+//
+//	월을 입력하세요.
+//	1
+//	2
+//	3
+//
+//	1월은 31일까지 있습니다.
+//	2월은 28일까지 있습니다.
+//	3월은 31일까지 있습니다.
+
 	private static final int[] MAX_DAYS = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 	public int getMaxDaysOfMonth(int month) {
@@ -13,32 +25,34 @@ public class Calendar {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
-		Calendar cal = new Calendar(); 
-		System.out.println("달을 입력하세요.");
-		int month = scanner.nextInt();
-		scanner.close();
-		int[] maxDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		Calendar cal = new Calendar();
+		
+		System.out.println("반복 횟수를 입력하세요.");
+		int times = scanner.nextInt();
+		
+		for (int i = 0; i < times; i++) { // n번 반복하는 코드
+			System.out.println("달을 입력하세요.");
+			int month = scanner.nextInt();
+			System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getMaxDaysOfMonth(month)); // 메소드 생성
+		}
 
-		System.out.printf("%d월은 %d일까지 있습니다. \n", month, cal.getMaxDaysOfMonth(month)); // 메소드 생성
+		System.out.println("--반복 횟수 종료--");
+		scanner.close();
 	}
 }
+/*			
+// 내가 만든 코드 
+		int i = 1;
+		while (i <= times) {
+			System.out.println(times + "번");
+			i++; // 없으면 무한루프 됨.
+		
+		System.out.println("월을 입력하세요.");
+		int month = scanner.nextInt();
+		int cnt = times;
 
-// 변수와 if문, 배열을 활용해 월을 입력하면 그 달이 몇일로 구성되어 있는지 출력하는 프로그램 작성하기 
-
-//	public static void main(String[] args) {
-//		Scanner scanner = new Scanner(System.in); //scanner클래스 객체 생성 
-//		System.out.println("달을 입력하세요.");
-//		String s1;	// 변수 선언   
-//		s1 = scanner.next();
-//		int n = Integer.parseInt(s1); //정수를 받는다
-//		
-//		if (n % 2 == 0) { // 짝수
-//			System.out.println(n + "월은 30일까지 있습니다.");
-//			if (n == 2) {
-//				System.out.println(n + "월은 27~29일까지 있습니다.");			
-//			}
-//		} else if (n % 2 != 0) { // 홀수 
-//			System.out.println(n + "월은 31일까지 있습니다.");
-//		} 
-//	}
-//}
+		while (cnt <= month) {
+			cnt++;
+			System.out.printf("%d월은 %d일까지 있습니다. \n", cnt, cal.getMaxDaysOfMonth(cnt)); // 메소드 생성
+		}
+*/
